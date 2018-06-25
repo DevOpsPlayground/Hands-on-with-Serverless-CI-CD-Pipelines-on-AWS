@@ -27,3 +27,15 @@ Resources:
       TemplateURL: ./repo.yaml
       Parameters:
         RepositoryName: !Ref RepositoryName
+  CfnRole:
+    Type: AWS::CloudFormation::Stack
+    Properties:
+      TemplateURL: ./iam-cfnrole.yaml
+  PipelineRole:
+    Type: AWS::CloudFormation::Stack
+    Properties:
+      TemplateURL: ./iam-pipelinerole.yaml
+  CodebuildRole:
+    Type: AWS::CloudFormation::Stack
+    Properties:
+      TemplateURL: ./iam-codebuildrole.yaml

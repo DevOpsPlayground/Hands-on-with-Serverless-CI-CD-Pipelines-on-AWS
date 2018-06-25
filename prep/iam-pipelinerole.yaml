@@ -49,7 +49,7 @@ Resources:
                   - 'codecommit:*'
                   - 'sts:AssumeRole'
                   Effect: Allow
-                  Resource: !GetAtt Repository.Outputs.RepoArn
+                  Resource: '*'
           - PolicyName: CodeBuildAccess
             PolicyDocument:
               Version: '2012-10-17'
