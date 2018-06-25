@@ -1,0 +1,46 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'DevOps Playground Meetup Service Role setup.'
+
+Parameters:
+  RepositoryName:
+    Type: String
+Resources:
+  UserRole:
+    Type: "AWS::IAM::Role"
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: "Allow"
+            Principal:
+              Service:
+                - "cloudformation.amazonaws.com"
+              AWS:
+                - !Sub "arn:aws:iam::${AWS::AccountId}:user/pg23meetup"
+            Action:
+              - "sts:AssumeRole"
+      MaxSessionDuration: 10800
+      Path: "/"
+      RoleName: "pg23meetuprole"
+      Policies:
+        - PolicyName: Pg23UserRolePolicy
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Action:
+                - s3:*
+                Effect: Allow
+                Resource: '*'
+              - Action:
+                - codepipeline:*
+                Effect: Allow
+                Resource: '*'
+              - Action:
+                - codebuild:*
+                Effect: Allow
+                Resource: '*'
+              - Action:
+                - codecommit:*
+                Effect: Allow
+                Resource: '*'
+      # User permissions go here

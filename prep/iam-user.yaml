@@ -1,0 +1,35 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'DevOps Playground Meetup user account setup.'
+Metadata:
+  AWS::CloudFormation::Interface:
+    ParameterGroups:
+      - Label:
+          default: "DevOps Playground Account Setup"
+        Parameters:
+          - pUserPassword
+
+    ParameterLabels:
+      pUserPassword:
+        default: "User Password"
+
+
+Parameters:
+  pUserPassword:
+    NoEcho: "true"
+    Description: The user account password
+    Type: String
+    MinLength: "8"
+    MaxLength: "41"
+    AllowedPattern: "[a-zA-Z0-9]*"
+    ConstraintDescription: must contain only alphanumeric characters.
+
+
+Resources:
+  meetupUser:
+    Type: "AWS::IAM::User"
+    Properties:
+      LoginProfile:
+        Password: !Ref pUserPassword
+        PasswordResetRequired: "false"
+      Path: "/"
+      UserName: "pg23meetup"

@@ -1,0 +1,61 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Resources:
+  PipelineRole:
+      Type: AWS::IAM::Role
+      Properties:
+        AssumeRolePolicyDocument:
+          Statement:
+          - Action: ['sts:AssumeRole']
+            Effect: Allow
+            Principal:
+              Service: [codepipeline.amazonaws.com]
+          - Action: ['sts:AssumeRole']
+            Effect: Allow
+            Principal:
+                Service: [codebuild.amazonaws.com]
+          Version: '2012-10-17'
+        Path: /
+        Policies:
+          - PolicyName: CodePipelineAccess
+            PolicyDocument:
+              Version: '2012-10-17'
+              Statement:
+                - Action:
+                  - 's3:*'
+                  - 'cloudformation:CreateStack'
+                  - 'cloudformation:DescribeStacks'
+                  - 'cloudformation:DeleteStack'
+                  - 'cloudformation:UpdateStack'
+                  - 'cloudformation:CreateChangeSet'
+                  - 'cloudformation:ExecuteChangeSet'
+                  - 'cloudformation:DeleteChangeSet'
+                  - 'cloudformation:DescribeChangeSet'
+                  - 'cloudformation:SetStackPolicy'
+                  - 'cloudwatch:*' # Limit to creation of log groups etc.
+                  - 'cloudwatchlogs:*' # Limit permissions
+                  - 'logs:*'
+                  - 'iam:PassRole'
+                  - 'sns:*'
+                  - 'sts:AssumeRole'
+                  - 'codecommit:*'
+                  - 'ecr:*'
+                  Effect: Allow
+                  Resource: '*'
+          - PolicyName: CodeCommitAccess
+            PolicyDocument:
+              Version: '2012-10-17'
+              Statement:
+                - Action:
+                  - 'codecommit:*'
+                  - 'sts:AssumeRole'
+                  Effect: Allow
+                  Resource: !GetAtt Repository.Outputs.RepoArn
+          - PolicyName: CodeBuildAccess
+            PolicyDocument:
+              Version: '2012-10-17'
+              Statement:
+                - Action:
+                  - codebuild:*
+                  - logs:*
+                  Effect: Allow
+                  Resource: '*'

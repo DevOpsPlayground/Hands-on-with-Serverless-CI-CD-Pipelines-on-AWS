@@ -1,0 +1,3 @@
+pass=$1
+aws cloudformation package --template-file ./prep/go.yaml --output-template-file ./output.yaml --s3-bucket pg23deploybucket --profile ecs-training --region eu-west-1
+aws cloudformation update-stack --stack-name pg23setup --template-body file://./output.yaml --parameters ParameterKey=PgUserPassword,ParameterValue=$pass --profile ecs-training --region eu-west-1 --capabilities=CAPABILITY_NAMED_IAM

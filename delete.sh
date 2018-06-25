@@ -1,0 +1,1 @@
+aws cloudformation delete-stack --stack-name pg23setup --profile ecs-training --region eu-west-1
