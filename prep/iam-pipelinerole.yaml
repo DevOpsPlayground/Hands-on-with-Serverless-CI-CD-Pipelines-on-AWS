@@ -4,6 +4,7 @@ Resources:
       Type: AWS::IAM::Role
       Properties:
         AssumeRolePolicyDocument:
+          Version: '2012-10-17'
           Statement:
           - Action: ['sts:AssumeRole']
             Effect: Allow
@@ -13,7 +14,10 @@ Resources:
             Effect: Allow
             Principal:
                 Service: [codebuild.amazonaws.com]
-          Version: '2012-10-17'
+          - Action: ['sts:AssumeRole']
+            Effect: Allow
+            Principal:
+              Service: [events.amazonaws.com]
         Path: /
         Policies:
           - PolicyName: CodePipelineAccess
@@ -21,24 +25,24 @@ Resources:
               Version: '2012-10-17'
               Statement:
                 - Action:
-                  - 's3:*'
-                  - 'cloudformation:CreateStack'
-                  - 'cloudformation:DescribeStacks'
-                  - 'cloudformation:DeleteStack'
-                  - 'cloudformation:UpdateStack'
-                  - 'cloudformation:CreateChangeSet'
-                  - 'cloudformation:ExecuteChangeSet'
-                  - 'cloudformation:DeleteChangeSet'
-                  - 'cloudformation:DescribeChangeSet'
-                  - 'cloudformation:SetStackPolicy'
-                  - 'cloudwatch:*' # Limit to creation of log groups etc.
-                  - 'cloudwatchlogs:*' # Limit permissions
-                  - 'logs:*'
-                  - 'iam:PassRole'
-                  - 'sns:*'
-                  - 'sts:AssumeRole'
-                  - 'codecommit:*'
-                  - 'ecr:*'
+                  - codepipeline:*
+                  - s3:*
+                  - cloudformation:CreateStack
+                  - cloudformation:DescribeStacks
+                  - cloudformation:DeleteStack
+                  - cloudformation:UpdateStack
+                  - cloudformation:CreateChangeSet
+                  - cloudformation:ExecuteChangeSet
+                  - cloudformation:DeleteChangeSet
+                  - cloudformation:DescribeChangeSet
+                  - cloudformation:SetStackPolicy
+                  - cloudwatch:*
+                  - logs:*
+                  - iam:PassRole
+                  - sns:*
+                  - sts:AssumeRole
+                  - codecommit:*
+                  - ecr:*
                   Effect: Allow
                   Resource: '*'
           - PolicyName: CodeCommitAccess

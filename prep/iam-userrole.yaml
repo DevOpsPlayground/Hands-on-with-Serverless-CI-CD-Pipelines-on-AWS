@@ -43,4 +43,22 @@ Resources:
                 - codecommit:*
                 Effect: Allow
                 Resource: '*'
-      # User permissions go here
+              - Action:
+                - iam:ListRoles
+                Effect: Allow
+                Resource: '*'
+              - Action:
+                - events:ListRuleNamesByTarget
+                - events:PutRule
+                - events:PutTargets
+                Effect: Allow
+                Resource: '*'
+              - Action:
+                - iam:*
+                # - iam:CreatePolicy
+                # - iam:CreateRole
+                # - iam:AttachRolePolicy
+                # - iam:PassRole
+                # - iam:PutRolePolicy
+                Effect: Allow
+                Resource: '*'
