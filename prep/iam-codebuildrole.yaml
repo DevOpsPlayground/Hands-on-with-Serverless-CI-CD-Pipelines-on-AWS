@@ -1,29 +1,29 @@
 AWSTemplateFormatVersion: "2010-09-09"
 Resources:
   CodeBuildRole:
-      Type: AWS::IAM::Role
-      Properties:
-        AssumeRolePolicyDocument:
-          Statement:
-          - Action: ['sts:AssumeRole']
-            Effect: Allow
-            Principal:
-                Service: [codebuild.amazonaws.com]
-          Version: '2012-10-17'
-        Path: /
-        Policies:
-          - PolicyName: CodePipelineAccess
-            PolicyDocument:
-              Version: '2012-10-17'
-              Statement:
-                - Action:
-                  - 's3:*'
-                  - 'cloudwatch:*' # Limit to creation of log groups etc.
-                  - 'logs:*'
-                  - 'iam:PassRole'
-                  - 'sns:*'
-                  - 'sts:AssumeRole'
-                  - 'codecommit:*'
-                  - 'codebuild:*'
-                  Effect: Allow
-                  Resource: '*'
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Statement:
+        - Action: ['sts:AssumeRole']
+          Effect: Allow
+          Principal:
+              Service: [codebuild.amazonaws.com]
+        Version: '2012-10-17'
+      Path: /
+      Policies:
+        - PolicyName: CodePipelineAccess
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Action:
+                - 's3:*'
+                - 'cloudwatch:*' # Limit to creation of log groups etc.
+                - 'logs:*'
+                - 'iam:PassRole'
+                - 'sns:*'
+                - 'sts:AssumeRole'
+                - 'codecommit:*'
+                - 'codebuild:*'
+                Effect: Allow
+                Resource: '*'

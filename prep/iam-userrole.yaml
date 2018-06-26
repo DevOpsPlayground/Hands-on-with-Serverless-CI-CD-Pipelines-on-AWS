@@ -13,8 +13,6 @@ Resources:
         Statement:
           - Effect: "Allow"
             Principal:
-              Service:
-                - "cloudformation.amazonaws.com"
               AWS:
                 - !Sub "arn:aws:iam::${AWS::AccountId}:user/pg23meetup"
             Action:
@@ -44,7 +42,7 @@ Resources:
                 Effect: Allow
                 Resource: '*'
               - Action:
-                - iam:ListRoles
+                - iam:*
                 Effect: Allow
                 Resource: '*'
               - Action:
@@ -54,11 +52,6 @@ Resources:
                 Effect: Allow
                 Resource: '*'
               - Action:
-                - iam:*
-                # - iam:CreatePolicy
-                # - iam:CreateRole
-                # - iam:AttachRolePolicy
-                # - iam:PassRole
-                # - iam:PutRolePolicy
+                - sts:AssumeRole
                 Effect: Allow
                 Resource: '*'
