@@ -16,6 +16,7 @@ Resources:
       Parameters:
         pUserPassword: !Ref PgUserPassword
   UserRole:
+    DependsOn: User
     Type: AWS::CloudFormation::Stack
     Properties:
       TemplateURL: ./iam-userrole.yaml
