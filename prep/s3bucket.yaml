@@ -1,0 +1,7 @@
+AWSTemplateFormatVersion: 2010-09-09
+
+Resources:
+  pg23deploybucket:
+    Type: "AWS::S3::Bucket"
+    Properties:
+      BucketName: pg23appdeploybucket

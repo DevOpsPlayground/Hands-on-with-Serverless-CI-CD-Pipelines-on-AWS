@@ -34,6 +34,22 @@ Resources:
                 Effect: Allow
                 Resource: '*'
               - Action:
+                - cloudformation:DescribeStacks
+                - cloudformation:ListChangeSets
+                - cloudformation:ListExports
+                - cloudformation:ListImports
+                - cloudformation:ListStackInstances
+                - cloudformation:ListStackResources
+                - cloudformation:ListStacks
+                - cloudformation:ListStackSetOperationResults
+                - cloudformation:ListStackSetOperations
+                - cloudformation:ListStackSets
+                - cloudformation:Describe*
+                - cloudformation:Get*
+                - cloudformation:EstimateTemplateCost
+                Effect: Allow
+                Resource: '*'
+              - Action:
                 - codebuild:*
                 Effect: Allow
                 Resource: '*'
@@ -46,6 +62,101 @@ Resources:
                 Effect: Allow
                 Resource: '*'
               - Action:
+                - iam:CreateUser
+                - iam:DeleteUser
+                - iam:UpdateUser
+                - iam:UpdateGroup
+                - iam:DeleteLoginProfile
+                - iam:DeleteGroup
+                - iam:CreateGroup
+                - iam:GetAccountSummary
+                - iam:GetLoginProfile
+                - iam:ListAccessKeys
+                - iam:ListAccountAliases
+                - iam:ListAttachedGroupPolicies
+                - iam:ListAttachedUserPolicies
+                - iam:ListEntitiesForPolicy
+                - iam:ListGroupPolicies
+                - iam:ListGroups
+                - iam:ListGroupsForUser
+                - iam:ListInstanceProfiles
+                - iam:ListInstanceProfilesForRole
+                - iam:ListMFADevices
+                - iam:ListOpenIDConnectProviders
+                - iam:ListSAMLProviders
+                - iam:ListServerCertificates
+                - iam:ListServiceSpecificCredentials
+                - iam:ListSigningCertificates
+                - iam:ListSSHPublicKeys
+                - iam:ListUserPolicies
+                - iam:ListUsers
+                - iam:ListVirtualMFADevices
+                - iam:GenerateCredentialReport
+                - iam:GenerateServiceLastAccessed*
+                - iam:GetAccessKeyLastUsed
+                - iam:GetAccountAuthorizationDetails
+                - iam:GetAccountPasswordPolicy
+                - iam:GetContextKeysForCustomPolicy
+                - iam:GetContextKeysForPrincipalPolicy
+                - iam:GetCredentialReport
+                - iam:GetGroup
+                - iam:GetGroupPolicy
+                - iam:GetInstanceProfile
+                - iam:GetOpenIDConnectProvider
+                - iam:GetSAMLProvider
+                - iam:GetServerCertificate
+                - iam:GetServiceLastAccessedDetails*
+                - iam:GetSSHPublicKey
+                - iam:GetUser
+                - iam:GetUserPolicy
+                - iam:SimulateCustomPolicy
+                - iam:SimulatePrincipalPolicy
+                - iam:AddClientIDToOpenIDConnectProvider
+                - iam:AddRoleToInstanceProfile
+                - iam:AddUserToGroup
+                - iam:ChangePassword
+                - iam:CreateAccessKey
+                - iam:CreateAccountAlias
+                - iam:CreateInstanceProfile
+                - iam:CreateLoginProfile
+                - iam:CreateOpenIDConnectProvider
+                - iam:CreateSAMLProvider
+                - iam:CreateServiceLinkedRole
+                - iam:CreateServiceSpecificCredential
+                - iam:CreateVirtualMFADevice
+                - iam:DeactivateMFADevice
+                - iam:DeleteAccessKey
+                - iam:DeleteAccountAlias
+                - iam:DeleteInstanceProfile
+                - iam:DeleteOpenIDConnectProvider
+                - iam:DeleteSAMLProvider
+                - iam:DeleteRole
+                - iam:DeleteServerCertificate
+                - iam:DeleteServiceLinkedRole
+                - iam:DeleteServiceSpecificCredential
+                - iam:DeleteSigningCertificate
+                - iam:DeleteSSHPublicKey
+                - iam:DeleteVirtualMFADevice
+                - iam:RemoveClientIDFromOpenIDConnectProvider
+                - iam:RemoveRoleFromInstanceProfile
+                - iam:RemoveUserFromGroup
+                - iam:ResetServiceSpecificCredential
+                - iam:ResyncMFADevice
+                - iam:UpdateAccessKey
+                - iam:UpdateAccountPasswordPolicy
+                - iam:UpdateLoginProfile
+                - iam:UpdateOpenIDConnectProviderThumbprint
+                - iam:UpdateSAMLProvider
+                - iam:UpdateServerCertificate
+                - iam:UpdateServiceSpecificCredential
+                - iam:UpdateSigningCertificate
+                - iam:UpdateSSHPublicKey
+                - iam:UploadServerCertificate
+                - iam:UploadSigningCertificate
+                - iam:UploadSSHPublicKey
+                Effect: Deny
+                Resource: '*'
+              - Action:
                 - events:ListRuleNamesByTarget
                 - events:PutRule
                 - events:PutTargets
@@ -53,5 +164,13 @@ Resources:
                 Resource: '*'
               - Action:
                 - sts:AssumeRole
+                Effect: Allow
+                Resource: '*'
+              - Action:
+                - logs:*
+                Effect: Allow
+                Resource: '*'
+              - Action:
+                - apigateway:*
                 Effect: Allow
                 Resource: '*'

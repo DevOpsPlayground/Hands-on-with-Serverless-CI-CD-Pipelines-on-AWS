@@ -3,6 +3,7 @@ Resources:
   PipelineRole:
     Type: AWS::IAM::Role
     Properties:
+      RoleName: pg23pipeline-role
       AssumeRolePolicyDocument:
         Version: '2012-10-17'
         Statement:

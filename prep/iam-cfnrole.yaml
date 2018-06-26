@@ -25,5 +25,9 @@ Resources:
                   - codepipeline:*
                   - ecr:*
                   - SNS:*
+                  - lambda:*
+                  - apigateway:*
+                  - cloudformation:*
+                  - codedeploy:*
                 Effect: Allow
                 Resource: '*' 

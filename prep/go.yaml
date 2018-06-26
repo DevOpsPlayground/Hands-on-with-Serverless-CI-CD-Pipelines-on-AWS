@@ -36,7 +36,7 @@ Resources:
     Type: AWS::CloudFormation::Stack
     Properties:
       TemplateURL: ./iam-pipelinerole.yaml
-  CodebuildRole:
+  S3Bucket:
     Type: AWS::CloudFormation::Stack
     Properties:
-      TemplateURL: ./iam-codebuildrole.yaml
+      TemplateURL: ./s3bucket.yaml

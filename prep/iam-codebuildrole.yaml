@@ -25,5 +25,6 @@ Resources:
                 - 'sts:AssumeRole'
                 - 'codecommit:*'
                 - 'codebuild:*'
+                - 'cloudformation:*'
                 Effect: Allow
                 Resource: '*'
