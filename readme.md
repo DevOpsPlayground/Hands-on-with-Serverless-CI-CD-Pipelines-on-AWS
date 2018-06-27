@@ -251,7 +251,7 @@ The first action we need is one which takes the output of our build (the package
 
 On the stage click the + Action button. A pane should appear to the right, in this pane choose Deploy as the Action Category
 
-![](images/add-generate-changeset-action)
+![](images/add-generate-changeset-action.png)
 
 Give the action a name and select AWS CloudFormation as the Deployment Provider
 
