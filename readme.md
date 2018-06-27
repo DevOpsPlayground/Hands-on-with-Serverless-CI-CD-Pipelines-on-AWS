@@ -7,6 +7,7 @@
     - [Define the Source](#define-the-source)
     - [Define the Build](#define-the-build)
     - [Observe the failure](#observe-the-failure)
+    - [Diagnose the build](#diagnose-the-build)
     - [Fix the build!](#fix-the-build)
     - [Re-run the pipeline](#re-run-the-pipeline)
     - [Add a new stage](#add-a-new-stage)
@@ -162,28 +163,59 @@ The final stage is to review the pipeline settings.
 
 Once you're happy with the settings, click "Create Pipeline"
 
+Your build should now run.
 
-
+![](images/build-run1.png)
 
 ### Observe the failure
 
-Your pipeline should be triggered on creation but will likely fail at this point
+The build will fail!
 
-### Fix the build!
+![](images/failed-build.png)
 
-The build will have failed as one of the steps requires permission to perform a PutObject request on s3. Let's fix this.
+### Diagnose the build
 
-Navigate to the IAM user interface and select Roles on the left.
-Find the role you created for your CodeBuild configuration.
+To fix the build we need to know what went wrong.
+
+In the failed build step, click on the details link.
+
+![](images/details-link.png)
+
+And then click the "Link to execution details".
+
+![](images/link-execution-details.png)
+
+This will take us to the codebuild history for that execution. You will see in the build logs that we are missing a permission for PutObject on S3. This permission needs to be assigned to the CodeBuild role defined earlier.
+
+![](images/codebuild-failure.png)
+
+### Fix the build
+
+Navigate to the IAM user interface.
+
+![](images/navigate-iam.png)
+
+Select Roles on the left and fine the role you created for your CodeBuild configuration.
+
+![](images/find-role.png)
+
+Click on the role link to get to the details of the role
+
+![](images/role-details.png)
 
 Click the "Attach Policy" button.
 
 Type "S3" in the search box.
+
 For this demo let's just assign "AmazonS3FullAccess" - in a real environment you'd define an appropriate policy for your bucket for least privilege. Select the "AmazonS3FullAccess" role by clicking the checkbox to its left.
+
+![](images/attach-policy.png)
 
 Click the "Attach Policy" button down the bottom right.
 
 Observe that the Permissions tab now lists "AmazonS3FullAccess" in addition to existing policies.
+
+![](images/verify-role.png)
 
 ### Re-run the pipeline
 
