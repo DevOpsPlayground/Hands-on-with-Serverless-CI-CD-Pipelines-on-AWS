@@ -18,6 +18,7 @@
     - [Commit a change!](#commit-a-change)
     - [Verify the change!](#verify-the-change)
 - [Conclusion](#conclusion)
+- [One more thing...](#one-more-thing)
 
 # Overview
 Serverless is fast becoming the new default compute model for many software projects. The attractive pay as you go pricing model, rapid scaling and reduced ops overhead are very compelling advantages to any organisation shipping software.
@@ -123,16 +124,23 @@ You will see the UI change to show additional controls which allow you to modify
 
 ### Verify the change
 
-### Conclusion
+# Conclusion
 
 So now we have a pipeline which can continuously deploy changes from our master branch to our deployment environment. 
 
 Other additions we can make to this pipeline include additional stages (such as uat), manual approval (requiring human intervention in order to continue) as well as other actions such as running tests. 
 
 
-### One more thing
+# One more thing
 
 As a sidenote, CodePipeline and CodeBuild also generate events which can be consumed and fed into CloudWatch as metrics. This can be used to build dashboards showing the performance of your pipeline and development process. This can be a powerful tool in diagnosing issues with your SDLC by examining the various metrics with regards to feedback, failure and deployment rate.
+
+This dashboard was borrowed from Stelligent
+
+https://stelligent.com/2017/11/16/codepipeline-dashboard/
+The code can be found here: https://github.com/stelligent/pipeline-dashboard
+
+What interesting metrics can you pick out of your pipeline?
 
 
 
