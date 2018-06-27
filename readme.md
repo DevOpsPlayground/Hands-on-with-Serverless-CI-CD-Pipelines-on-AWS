@@ -1,6 +1,23 @@
 # Serverless CI/CD with AWS
 
 - [Overview](#overview)
+- [Hands On](#hands-on)
+    - [Logging in to AWS Console](#logging-in-to-aws-console)
+    - [Creating the Pipeline](#creating-the-pipeline)
+    - [Define the Source](#define-the-source)
+    - [Define the Build](#define-the-build)
+    - [Observe the failure](#observe-the-failure)
+    - [Fix the build!](#fix-the-build)
+    - [Re-run the pipeline](#re-run-the-pipeline)
+    - [Add a new stage](#add-a-new-stage)
+    - [Add a generate changeset action](#add-a-generate-changeset-action)
+    - [Add an execute changeset action](#add-an-execute-changeset-action)
+    - [Re-run the pipeline again](#re-run-the-pipeline-again)
+    - [This is what success looks like!](#this-is-what-success-looks-like)
+    - [Verify the deployment](#verify-the-deployment)
+    - [Commit a change!](#commit-a-change)
+    - [Verify the change!](#verify-the-change)
+- [Conclusion](#conclusion)
 
 # Overview
 Serverless is fast becoming the new default compute model for many software projects. The attractive pay as you go pricing model, rapid scaling and reduced ops overhead are very compelling advantages to any organisation shipping software.
@@ -11,7 +28,7 @@ In this playground we're going to remove some of that burden by creating a serve
 
 # Hands On
 
-### Logging in to AWS
+### Logging in to AWS Console
 You can skip this section if you are using your own AWS account and have appropriate IAM access (detailed in addendum)
 
 First we need to login to the console (credentials provided separately) - also ensure that we are in the eu-west-1 region.
@@ -48,13 +65,13 @@ Leave the "Change detection options" at their default - for CodeCommit and s3 th
 
 Click the "Next Step" button to continue
 
-## Define the Build
+### Define the Build
 
-### Deployment
+### Skip deployment for now
 
 For now select No Deployment - we'll come back and add this step later.
 
-### Observe
+### Observe the failure
 
 Your pipeline should be triggered on creation but will likely fail at this point
 
@@ -96,15 +113,15 @@ You will see the UI change to show additional controls which allow you to modify
 
 ### Add an apply changeset action
 
-### Re-run the pipeline
+### Re-run the pipeline again
 
-### Success!!
+### This is what success looks like!
 
 ### Verify the deployment
 
 ### Commit a change
 
-### Verify the deployment
+### Verify the change
 
 ### Conclusion
 
