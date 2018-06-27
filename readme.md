@@ -82,9 +82,88 @@ Click the "Next Step" button to continue
 
 ### Define the Build
 
+Next you need to pick your build provider. This can be a number of different options (some are not shown in the drop down, such as teamcity as these can be defined if you create your codebuild configuration using cloudformation), but for our purposes we're going to use CodeBuild.
+
+![](images/choose-codebuild.png)
+
+A number of additional fields will now appear which will need to be populated in order to create our codebuild configuration.
+
+Firstly we want to "Create a new build project" and fill out the name field
+
+![](images/name-your-project.png)
+
+Next we need to define the build environment. This can be achieved by either using an AWS provided CodeBuild container or by specifying a docker image of your choosing from either Amazon ECR or another docker repository.
+
+We are going to use a standard linux ubuntu image with the nodejs10 environment.
+
+![](images/build-environment.png)
+
+The build specification defines the steps and commands you need to run in order to perform the build (e.g. npm install) as well as defining which artifacts are output from the process to be consumed by subsequent pipeline stages. You can feed parameters into the build spec by using environment variables which are injected into the container at runtime.
+
+For more information on the buildspec see https://docs.aws.amazon.com/codebuild/latest/userguide/build-spec-ref.html
+
+We have provided the buildspec for the project so just leave the "Use the buildspec.yml in the source code root directory" selected, all we're doing in the buildspec is validating and packaging a cloudformation template. 
+
+Also leave the Cache set to "No cache".
+
+Scroll down to the AWS CodeBuild service role section.
+
+![](images/service-role.png)
+
+You can choose to either create an IAM role for this build project or re-use an existing one. At the time of writing if you re-use an existing one you can only do so 9 times as each time you re-use it will add an additional policy to the existing role and there's a limit of 10.
+
+For this demo choose "Create a service role in your account", a sensible default name should already be populated but keep note of it for later as we may need additional permissions applied to that role in order to complete the build
+
+No VPC is required for this particular build but if for example you wanted to update the database schema of an RDS instance in a VPC you would need to configure this.
+
+The advanced section we won't be altering but worth talking through some of the options there.
+
+![](images/advanced.png)
+
+Timeout - How long before you consider your build dead in the water. This is important to reduce cost, set it to something reasonable - too large and you may incur additional cost if a build stalls, too short and your builds may become intermittent especially where access to public artifcats is required (e.g. npm).
+
+Privileged - If you are building docker images using CodeBuild then you need this. Often the use case is that CodeBuild will build and push a docker image and then that is rolled out to ECS using Cloudformation to replace the image on the service.
+
+Compute Type - this determines the performance level of your container and also your cost per build minute.
+
+Environment Variables - these are the variables available within your buildspec execution so if you need to parameterise your build you'd do it in this way.
+
+Click "Save build project". This takes a few seconds as it also has to create the service role.
+
+When creation is complete, hit the "Next step" button
+
+![](images/creation-complete.png)
+
 ### Skip deployment for now
 
 For now select No Deployment - we'll come back and add this step later.
+
+![](images/no-deployment.png)
+
+Click "Next step"
+
+### Select a service role
+
+CodePipeline requires a role in order to perform actions. You can either create a new role which will apply a default set of permissions or assume an existing one.
+
+Select the existing "pg23-codepipeline-role" for this example
+
+![](images/codepipeline-service-role.png)
+
+The minimum set of permissions required by the codepipeline role and how you define a custom role is outlined in aws documentation which can be found here https://docs.aws.amazon.com/codepipeline/latest/userguide/how-to-custom-role.html
+
+Click "Next step" to proceed.
+
+### Review the pipeline
+
+The final stage is to review the pipeline settings.
+
+![](images/review-pipeline.png)
+
+Once you're happy with the settings, click "Create Pipeline"
+
+
+
 
 ### Observe the failure
 
