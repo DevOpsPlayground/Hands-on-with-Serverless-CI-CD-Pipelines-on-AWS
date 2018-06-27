@@ -221,6 +221,12 @@ Observe that the Permissions tab now lists "AmazonS3FullAccess" in addition to e
 
 Go back to your pipeline and click the "Release" button. This time the pipeline should succeed and we are ready to define our deployment steps!
 
+![](images/success.png)
+
+SUCCESS!
+
+Ok so we've verified that the cloudformation template is valid and packaged up for deployment. We could add steps in here to perform unit tests, linting, static analysis etc here but let's try and deploy our application.
+
 ### Add a new stage
 
 Deployment of a SAM template needs to consist of two steps as CloudFormation stack creation currently does not support template transforms. 
@@ -235,7 +241,36 @@ In your pipeline, click the "Edit" button.
 
 You will see the UI change to show additional controls which allow you to modify your pipeline's workflow.
 
+![](images/add-stage.png)
+
 ### Add a generate changeset action
+
+The first action we need is one which takes the output of our build (the packaged sam template), and generates a change set for our cloudformation stack.
+
+On the stage click the + Action button. A pane should appear to the right, in this pane choose Deploy as the Action Category
+
+![](images/add-generate-changeset-action)
+
+Give the action a name and select AWS CloudFormation as the Deployment Provider
+
+![](images/action-1-generate-changeset.png)
+
+In the next section, select Action Mode "Create or replace a change set".
+
+Set a stack name.
+
+Set a change set name.
+
+For the template you need to refer to a previous build output, in our case that will be the artifact MyAppBuild and the template output.yaml so as the Template you specify MyAppBuilc::output.yaml
+
+Template configuration can be left blank
+
+Select CAPABILITY_IAM in the capabilities field.
+
+And finally select the pre-configured role pg23-cloudformation-role - this is the role assumed by CloudFormation when deploying the app.
+
+![](images/generate-changeset-settings.png)
+
 
 ### Add an apply changeset action
 
