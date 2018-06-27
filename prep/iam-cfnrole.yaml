@@ -3,6 +3,7 @@ Resources:
   CFNRole:
     Type: AWS::IAM::Role
     Properties:
+      RoleName: pg23-cloudformation-role
       AssumeRolePolicyDocument:
         Statement:
         - Action: ['sts:AssumeRole']

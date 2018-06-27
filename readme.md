@@ -51,12 +51,16 @@ You should now see an indicator in the top right showing that you are currently 
 
 ### Creating the pipeline
 
-Next we need to navigate to the CodePipeline user interface
+Next we need to navigate to the CodePipeline user interface.
 ![](images/navigate-to-codepipeline.png)
 
-Click the "Create Pipeline" button.
+Click the "Create Pipeline" button. If there are no pipelines listed you'll see a getting started screen instead so just click "Get started" to get to the next step
+
+![](images/pipeline-ui.png)
 
 You now need to give your pipeline a name - this needs to be unique so try and follow convention e.g. firstnamelastinitial-pg23-pipeline (e.g. paulf-pg23-pipeline)
+
+![](images/create-pipeline.png)
 
 Click the "Next Step" button to continue
 
@@ -66,9 +70,11 @@ The first step in our pipeline is to grab our source code. In our case this is p
 
 Choose CodeCommit.
 
-Pick the repository "pg23repo"
+![](images/choose-codecommit.png)
 
-Pick the branch "master"
+Pick the repository "pg23repo" and the branch master
+
+![](images/choose-repo-and-branch.png)
 
 Leave the "Change detection options" at their default - for CodeCommit and s3 this will use CloudWatch events to detect changes in order to trigger the pipeline, github will use webhooks.
 
