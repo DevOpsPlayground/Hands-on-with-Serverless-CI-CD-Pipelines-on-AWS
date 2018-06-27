@@ -376,6 +376,7 @@ As a sidenote, CodePipeline and CodeBuild also generate events which can be cons
 This dashboard was borrowed from Stelligent
 
 https://stelligent.com/2017/11/16/codepipeline-dashboard/
+
 The code can be found here: https://github.com/stelligent/pipeline-dashboard
 
 What interesting metrics can you pick out of your pipeline?
