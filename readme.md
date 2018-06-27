@@ -405,7 +405,7 @@ Custom Docker images can be used to reduce build time by installing necessary de
 
 ## CloudFormation
 
-Bread and butter of AWS automation. Worthy of a topic in itself.
+Bread and butter of AWS automation. Worthy of a topic in itself. The entire build pipeline itself can be provisioned using CloudFormation - I'll follow up later with an example on this, but this would allow you to version control your release process separately from your application build + deployment code.
 
 # Conclusion
 
