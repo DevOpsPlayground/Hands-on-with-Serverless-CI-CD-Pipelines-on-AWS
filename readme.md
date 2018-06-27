@@ -41,6 +41,10 @@ The user that we logged into won't have many permissions at this stage so we nee
 
 https://signin.aws.amazon.com/switchrole?roleName=pg23meetuprole&account=ecsd-training
 
+![](images/switch-role.png)
+
+Just click the "Switch Role" button to continue back to the console
+
 You should now see an indicator in the top right showing that you are currently assuming a role.
 
 ![](images/assumed-role.png)
