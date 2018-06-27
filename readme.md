@@ -18,6 +18,7 @@
     - [Verify the deployment](#verify-the-deployment)
     - [Commit a change!](#commit-a-change)
     - [Verify the change!](#verify-the-change)
+- [Additional Features](#additional-features)
 - [Conclusion](#conclusion)
 - [One more thing...](#one-more-thing)
 
@@ -359,7 +360,8 @@ Once the build has completed, refresh the browser tab that you made the request 
 
 ![](images/verify-change.png)
 
-# Conclusion
+### Additional Features
+### Conclusion
 
 So now we have a pipeline which can continuously deploy changes from our master branch to our deployment environment. 
 
@@ -367,7 +369,7 @@ Other additions we can make to this pipeline include additional stages (such as 
 
 So hopefully now you have an idea of some of the things CodePipeline, CodeBuild and CloudFormation are capable of and have an appetite to explore further functionality.
 
-# One more thing
+### One more thing
 
 As a sidenote, CodePipeline and CodeBuild also generate events which can be consumed and fed into CloudWatch as metrics. This can be used to build dashboards showing the performance of your pipeline and development process. This can be a powerful tool in diagnosing issues with your SDLC by examining the various metrics with regards to feedback, failure and deployment rate.
 
@@ -378,7 +380,33 @@ The code can be found here: https://github.com/stelligent/pipeline-dashboard
 
 What interesting metrics can you pick out of your pipeline?
 
+### Resources
 
+## AWS Resources
 
+# CodePipeline
 
+Product Details
+https://aws.amazon.com/codepipeline/details/
+
+Documentation
+https://docs.aws.amazon.com/codepipeline/latest/userguide/welcome.html
+
+CodePipeline custom role
+https://docs.aws.amazon.com/codepipeline/latest/userguide/how-to-custom-role.html
+
+# CodeBuild
+
+Product Details
+https://aws.amazon.com/codebuild/details/
+
+Documentation
+https://docs.aws.amazon.com/codebuild/latest/userguide/welcome.html
+
+CodeBuild custom role
+https://docs.aws.amazon.com/codebuild/latest/userguide/setting-up.html#setting-up-service-role
+
+# Stelligent Codepipeline Dashboards
+https://stelligent.com/2017/11/16/codepipeline-dashboard/
+https://github.com/stelligent/pipeline-dashboard
 
