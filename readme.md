@@ -271,25 +271,99 @@ And finally select the pre-configured role pg23-cloudformation-role - this is th
 
 ![](images/generate-changeset-settings.png)
 
+The advanced section allows you to define parameter overrids for your CloudFormation deployment but that is not necessary for our example.
 
-### Add an apply changeset action
+In Input artifacts 1, specify MyAppBuild - this tells the action to copy the artifacts from the CodeBuild section.
+
+We don't require any output artifacts, but these would be used to pass along to other build steps if required.
+
+Click Add Action to complete.
+
+![](images/action-1-added.png)
+
+### Add an execute changeset action
+
+As before, add another action under the GenerateChangeset one to indicate you want it to happen afterwards.
+
+Again, give the action a name and select AWS CloudFormation as the provider.
+
+Action mode needs to be set to Execute a change set.
+
+The Stack name needs to match the one from the previous action
+
+The change set name also needs to match the one from the previous action.
+
+Specify MyAppBuild as the input artifact.
+
+![](images/action-2-executechangeset.png)
+
+Now click "Save pipeline changes"
+
+Your pipeline should now look like follows:-
+
+![](images/pipeline.png)
+
 
 ### Re-run the pipeline again
 
+Click "Release change" to run the pipeline again with the deployment steps now defined.
+
+If things are going well, the build should pass then on the CloudFormation list you should observe a new stack being created and reviewed.
+
+![](images/review-stack.png)
+
 ### This is what success looks like!
+
+If everything goes to plan the pipeline should complete as follows:-
+
+![](images/done.png)
 
 ### Verify the deployment
 
+So we're deployed! We now have an API we can hit, but need to first find the endpoint. Hit the details link on the ExecuteChangeSet task to goto the resultant CloudFormation build.
+
+![](images/executechangeset-details.png)
+
+Click the Resources drop down and click on the link to the ServerlessRestApi
+
+![](images/cloudformation.png)
+
+This will take you to the API gateway console.
+
+Click on the gateway which is named similar to your CloudFormation stack
+
+![](images/api-gateway.png)
+
+Then click Stages and Prod, the url should appear in a pane to the right.
+
+![](images/api-url.png)
+
+If you open this url in another tab you'll see the result of the request to the lambda function hosted behind that api.
+
+![](images/result.png)
+
+Result!
+
 ### Commit a change
 
+Lets make a change to the app. In the interactive session I'll merge a pull request, but if doing this on your own go ahead and make some changes to the app.js file so that something obvious is different.
+
+When merging back / pushing the change to master, your build pipeline should begin to run again.
+
+
 ### Verify the change
+
+Once the build has completed, refresh the browser tab that you made the request to your api with. Hopefully the change will be reflected in the result.
+
+![](images/verify-change.png)
 
 # Conclusion
 
 So now we have a pipeline which can continuously deploy changes from our master branch to our deployment environment. 
 
-Other additions we can make to this pipeline include additional stages (such as uat), manual approval (requiring human intervention in order to continue) as well as other actions such as running tests. 
+Other additions we can make to this pipeline include additional stages (such as uat), manual approval (requiring human intervention in order to continue) as well as other actions such as running tests. We can also add notifications in the form of SNS topics to let you know if something has failed/succeeded etc.
 
+So hopefully now you have an idea of some of the things CodePipeline, CodeBuild and CloudFormation are capable of and have an appetite to explore further functionality.
 
 # One more thing
 
