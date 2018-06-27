@@ -459,6 +459,22 @@ https://docs.aws.amazon.com/codebuild/latest/userguide/welcome.html
 CodeBuild custom role
 https://docs.aws.amazon.com/codebuild/latest/userguide/setting-up.html#setting-up-service-role
 
+### CloudFormation
+
+Product Details
+https://aws.amazon.com/cloudformation/details/
+
+Documentation
+https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/Welcome.html
+
+### CodeCommit
+
+Product Details
+https://aws.amazon.com/codecommit/details/
+
+Documentation
+https://docs.aws.amazon.com/codecommit/latest/userguide/welcome.html
+
 ### Stelligent Codepipeline Dashboards
 https://stelligent.com/2017/11/16/codepipeline-dashboard/
 
