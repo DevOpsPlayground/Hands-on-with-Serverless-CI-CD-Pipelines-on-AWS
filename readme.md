@@ -429,8 +429,6 @@ What interesting metrics can you pick out of your pipeline?
 
 # Resources
 
-## AWS Resources
-
 ### CodePipeline
 
 Product Details
