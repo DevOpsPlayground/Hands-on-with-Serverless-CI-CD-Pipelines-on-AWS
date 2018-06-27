@@ -241,7 +241,9 @@ In your pipeline, click the "Edit" button.
 
 You will see the UI change to show additional controls which allow you to modify your pipeline's workflow.
 
-![](images/add-stage.png)
+Next you should click the +Stage button below the build stage as highlighted in the image. Give the stage a name and we can proceed to creating the action.
+
+![](images/add-stage2.png)
 
 ### Add a generate changeset action
 
