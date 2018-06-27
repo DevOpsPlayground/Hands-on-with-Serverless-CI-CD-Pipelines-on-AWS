@@ -41,7 +41,7 @@ The user that we logged into won't have many permissions at this stage so we nee
 
 https://signin.aws.amazon.com/switchrole?roleName=pg23meetuprole&account=ecsd-training
 
-![](images/switch-role.png)
+![](images/switch-role2.png)
 
 Just click the "Switch Role" button to continue back to the console
 
