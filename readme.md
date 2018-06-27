@@ -35,16 +35,20 @@ You can skip this section if you are using your own AWS account and have appropr
 First we need to login to the console (credentials provided separately) - also ensure that we are in the eu-west-1 region.
 https://ecsd-training.signin.aws.amazon.com/console
 
+![](images/login-to-aws.png)
+
 The user that we logged into won't have many permissions at this stage so we need to assume an appropriate role. Follow this link in order to do that
 
 https://signin.aws.amazon.com/switchrole?roleName=pg23meetuprole&account=ecsd-training
 
 You should now see an indicator in the top right showing that you are currently assuming a role.
 
+![](images/assumed-role.png)
+
 ### Creating the pipeline
 
 Next we need to navigate to the CodePipeline user interface
-![](images/codepipeline-ui.png)
+![](images/navigate-to-codepipeline.png)
 
 Click the "Create Pipeline" button.
 
