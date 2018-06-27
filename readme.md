@@ -361,11 +361,57 @@ Once the build has completed, refresh the browser tab that you made the request 
 ![](images/verify-change.png)
 
 # Additional Features
+
+These are some of the features available and worth being aware of at the time of writing:-
+
+## CodePipeline
+
+Pipelines are not restricted to just one sequence of events. You can also have actions which run in parallel.
+
+![](images/parallel-actions.png)
+
+Out of the box providers surfaced in the UI are currently:
+
+- Source Providers:
+    - CodeCommit (AWS git implementation)
+    - Github integration via webhooks and oauth tokens.
+    - Amazon S3
+
+- Build Providers:
+    - CodeBuild
+    - Jenkins (https://docs.aws.amazon.com/codepipeline/latest/userguide/tutorials-four-stage-pipeline.html?icmpid=docs_acp_console#tutorials-four-stage-pipeline-prerequisites)
+    - Solano CI
+
+- Deployment Providers:
+    - Amazon ECS (Deploy to existing ecs/eks/fargate cluster)
+    - AWS CloudFormation (featured here)
+    - AWS CodeDeploy
+    - AWS Elastic Beanstalk
+
+Other providers are available such as TeamCity. These are implemented as custom actions.
+
+- Additional Action Types:
+    - Approval Actions (manually prompt a user to approve a build, use in conjunction with SNS for notification via email etc)
+    - Test (Jenkins, CodeBuild, BlazeMeter, Ghost Inspector UI Testing, Nouvola, Runscope API Monitoring).
+    - Invoke Lambda allows you to do custom actions during stages
+
+CodePipeline is also extensible through custom actions and providers(https://docs.aws.amazon.com/codepipeline/latest/userguide/actions-create-custom-action.html)
+
+## CodeBuild
+
+Support of Linux/Windows containers for builds.
+
+Custom Docker images can be used to reduce build time by installing necessary dependencies, or depencencies which are not available on the amazon image. Optimized images can reduce the time and therefore cost of builds.
+
+## CloudFormation
+
+Bread and butter of AWS automation. Worthy of a topic in itself.
+
 # Conclusion
 
 So now we have a pipeline which can continuously deploy changes from our master branch to our deployment environment. 
 
-Other additions we can make to this pipeline include additional stages (such as uat), manual approval (requiring human intervention in order to continue) as well as other actions such as running tests. We can also add notifications in the form of SNS topics to let you know if something has failed/succeeded etc.
+Other additions we can make to this pipeline include additional stages (such as uat), manual approval (requiring human intervention in order to continue) as well as other actions such as running tests.
 
 So hopefully now you have an idea of some of the things CodePipeline, CodeBuild and CloudFormation are capable of and have an appetite to explore further functionality.
 
@@ -395,6 +441,12 @@ https://docs.aws.amazon.com/codepipeline/latest/userguide/welcome.html
 
 CodePipeline custom role
 https://docs.aws.amazon.com/codepipeline/latest/userguide/how-to-custom-role.html
+
+CodePipeline custom actions
+https://docs.aws.amazon.com/codepipeline/latest/userguide/actions-create-custom-action.html
+
+TeamCity integration
+https://aws.amazon.com/blogs/devops/building-end-to-end-continuous-delivery-and-deployment-pipelines-in-aws-and-teamcity/
 
 ### CodeBuild
 
