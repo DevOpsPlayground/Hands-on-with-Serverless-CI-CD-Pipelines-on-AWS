@@ -1,5 +1,7 @@
 # Serverless CI/CD with AWS
 
+![](images/infrastructure.png)
+
 - [Overview](#overview)
 - [Hands On](#hands-on)
     - [Logging in to AWS Console](#logging-in-to-aws-console)
