@@ -74,6 +74,8 @@ Click the "Next Step" button to continue
 
 The first step in our pipeline is to grab our source code. In our case this is provided in a codecommit repository but other options are available for github and AWS S3. The branch we'll be deploying is the master branch.
 
+If you are using your own account then you should use the contents of the repository https://github.com/ecsdigital/devopsplayground23-app - push this into your own CodeCommit repository and simply substitute the repository name in the steps here, the easiest way I've found is to checkout that repo, add a remote and push to your new remote repo.
+
 Choose CodeCommit.
 
 ![](images/choose-codecommit.png)
