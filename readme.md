@@ -23,7 +23,7 @@
 - [Additional Features](#additional-features)
 - [Conclusion](#conclusion)
 - [One more thing...](#one-more-thing)
-
+- [Resources](#resources)
 # Overview
 Serverless is fast becoming the new default compute model for many software projects. The attractive pay as you go pricing model, rapid scaling and reduced ops overhead are very compelling advantages to any organisation shipping software.
 
