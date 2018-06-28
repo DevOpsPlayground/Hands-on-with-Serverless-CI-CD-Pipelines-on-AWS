@@ -1,5 +1,4 @@
 # Serverless CI/CD with AWS
-
 ![](images/infrastructure.png)
 
 - [Overview](#overview)
@@ -24,6 +23,7 @@
 - [Conclusion](#conclusion)
 - [One more thing...](#one-more-thing)
 - [Resources](#resources)
+
 # Overview
 Serverless is fast becoming the new default compute model for many software projects. The attractive pay as you go pricing model, rapid scaling and reduced ops overhead are very compelling advantages to any organisation shipping software.
 
@@ -48,6 +48,8 @@ https://signin.aws.amazon.com/switchrole?roleName=pg23meetuprole&account=ecsd-tr
 ![](images/switch-role2.png)
 
 Just click the "Switch Role" button to continue back to the console
+
+Also switch your region to Ireland (eu-west-1), the default setup assumes this.
 
 You should now see an indicator in the top right showing that you are currently assuming a role.
 
