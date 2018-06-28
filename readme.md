@@ -475,6 +475,19 @@ https://aws.amazon.com/codecommit/details/
 Documentation
 https://docs.aws.amazon.com/codecommit/latest/userguide/welcome.html
 
+### Lambda
+
+Product Details
+https://aws.amazon.com/lambda/
+
+Documentation
+https://docs.aws.amazon.com/lambda/latest/dg/welcome.html
+
+### Serverless Application Model
+
+Deploying lambda-based applications
+https://docs.aws.amazon.com/lambda/latest/dg/deploying-lambda-apps.html
+
 ### Stelligent Codepipeline Dashboards
 https://stelligent.com/2017/11/16/codepipeline-dashboard/
 
